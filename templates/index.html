@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="text-center mb-5">
+  <h1 class="fw-bold text-gradient">📊 Keuangan Pribadi</h1>
+  <p class="lead text-muted">Catat, kelola, dan pantau arus kasmu dengan mudah dan elegan.</p>
+</div>
+
+<!-- Notifikasi Flash Message -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show mt-3 shadow-sm rounded-3" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<!-- Form Tambah Transaksi -->
+<div class="card glass-card p-4 mb-4">
+  <form method="POST" action="{{ url_for('add_transaction') }}" class="row g-3 align-items-center">
+    <div class="col-md-5">
+      <input type="text" name="desc" placeholder="Deskripsi transaksi" required class="form-control shadow-sm">
+    </div>
+    <div class="col-md-4">
+      <input type="number" step="any" name="amount"
+              placeholder="Nominal (+ pemasukan, - pengeluaran)"
+              required class="form-control shadow-sm">
+    </div>
+    <div class="col-md-3 text-end">
+      <button type="submit" class="btn btn-gradient w-100 fw-semibold">Tambah</button>
+    </div>
+  </form>
+</div>
+
+<!-- Total Saldo -->
+<div class="card shadow-sm p-4 balance-card mb-4 text-center glass-card">
+  <h4 class="mb-1 fw-semibold">Saldo Total</h4>
+  <h1 class="fw-bold {{ 'text-success' if total >= 0 else 'text-danger' }}">
+    Rp {{ '{:,.2f}'.format(total) }}
+  </h1>
+  <p class="text-muted mb-0">{{ 'Kondisi Keuangan Aman ✅' if total >= 0 else 'Waspada, saldo menipis ⚠️' }}</p>
+</div>
+
+<!-- Daftar Transaksi -->
+{% if transactions %}
+<div class="card glass-card p-4 table-card shadow-sm">
+  <table class="table table-hover align-middle text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>No</th>
+        <th>Deskripsi</th>
+        <th>Nominal (Rp)</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in transactions %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ t.desc }}</td>
+        <td class="{{ 'text-success fw-semibold' if t.amount > 0 else 'text-danger fw-semibold' }}">
+          {{ '{:,.2f}'.format(t.amount) }}
+        </td>
+        <td>
+          <a href="{{ url_for('delete_transaction', index=loop.index0) }}"
+              class="btn btn-outline-danger btn-sm rounded-pill px-3">Hapus</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+  <p class="text-center text-muted mt-4">💤 Belum ada transaksi. Tambahkan catatan di atas!</p>
+{% endif %}
+
+{% endblock %}

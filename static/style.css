@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+.glass-navbar {
+  background: rgba(26, 188, 156, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #16a085, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-gradient {
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #27ae60, #1e8449);
+  transform: scale(1.03);
+}
+
+/* Table */
+.table-card table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #34495e !important;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
