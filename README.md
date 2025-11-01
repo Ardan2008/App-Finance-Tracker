@@ -9,15 +9,15 @@ With a simple yet elegant system, users can add, view, and analyze their income 
 ---
 
 ## 🌟 Key Features
-- 💵 **Quick Transaction Recording**  
+- **Quick Transaction Recording**  
   Easily add income and expenses with flexible descriptions and amounts.  
-- 📊 **Automatic Financial Summary**  
+- **Automatic Financial Summary**  
   Instantly view total balance with indicators showing financial health (safe, deficit, etc.).  
-- 💾 **Local JSON Data Storage**  
+- **Local JSON Data Storage**  
   All transactions are stored in `data.json` for easy access and modification.  
-- 🎨 **Modern & Responsive Design**  
+- **Modern & Responsive Design**  
   Styled with *glassmorphism* and *gradient themes* for a sleek, elegant appearance.  
-- ⚡ **Database-Free Operation**  
+- **Database-Free Operation**  
   Lightweight, fast, and simple to run on any local environment.  
 
 ---
